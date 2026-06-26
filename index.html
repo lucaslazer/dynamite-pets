@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dynamite Pets | Pet Grooming & Supplies in Hercules, CA</title>
 <meta name="description" content="Dynamite Pets grooms one animal at a time on the Hercules waterfront. Pet supplies and personal care since 2015.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="alternate icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -253,6 +255,21 @@
   .service h3{font-size:1.1rem; margin-bottom:8px;}
   .service p{font-size:0.95rem; color:var(--ink-soft);}
 
+  /* pricing */
+  .price-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:10px;}
+  .price-category{border-radius:14px; padding:26px;}
+  .price-category h3{
+    font-family:'JetBrains Mono', monospace; font-size:0.82rem; text-transform:uppercase;
+    letter-spacing:0.05em; color:var(--accent); margin-bottom:6px; font-weight:500;
+  }
+  .price-row{padding:14px 0; border-bottom:1px solid var(--line);}
+  .price-row:last-child{border-bottom:none;}
+  .price-row-top{display:flex; justify-content:space-between; align-items:baseline; gap:12px;}
+  .price-row-top .name{font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:0.98rem;}
+  .price-row-top .price{font-family:'JetBrains Mono', monospace; font-size:0.88rem; color:var(--accent); white-space:nowrap;}
+  .price-row p{font-size:0.88rem; color:var(--ink-soft); margin-top:4px;}
+  .price-note{font-family:'JetBrains Mono', monospace; font-size:0.8rem; color:var(--ink-soft); margin-top:22px; text-align:center;}
+
   /* hours, as a ledger table */
   .hours-card{
     margin-top:18px; border-radius:14px; padding:8px 24px;
@@ -278,6 +295,7 @@
     h1{font-size:2.2rem;}
     .hero .wrap, .about .wrap, .contact .wrap{grid-template-columns:1fr;}
     .services-grid{grid-template-columns:1fr;}
+    .price-grid{grid-template-columns:1fr;}
     .navlinks{gap:16px; font-size:0.85rem;}
     .ledger .wrap{font-size:0.68rem;}
   }
@@ -314,6 +332,7 @@
       <div class="navlinks">
         <a href="#about">About</a>
         <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
         <a href="#hours">Hours</a>
         <a href="#contact">Visit</a>
       </div>
@@ -327,7 +346,7 @@
         <h1>One animal<br>at a time, <em>not<br>on a conveyor belt.</em></h1>
         <p class="lede">Dynamite Pets is a neighborhood pet supply store and grooming shop. No double-booked tables, no rush. Just your pet, fully attended to.</p>
         <div class="cta-row">
-          <a href="#" class="btn btn-primary">Book a Grooming Appointment</a>
+          <a href="https://app.squareup.com/appointments/book/n58xocbbv87rrz/FHCZT4CT6SA70/start" target="_blank" rel="noopener" class="btn btn-primary">Book a Grooming Appointment</a>
           <a href="#contact" class="btn btn-ghost">Visit the Store</a>
         </div>
       </div>
@@ -382,6 +401,101 @@
     </div>
   </section>
 
+  <section class="pricing" id="pricing">
+    <div class="wrap">
+      <div class="kicker">Grooming Price List</div>
+      <h2>What it costs.</h2>
+      <div class="price-grid">
+
+        <div class="price-category glass reveal">
+          <h3>Bathing Services (Woof!)</h3>
+          <div class="price-row">
+            <div class="price-row-top"><span class="name">Basic bath</span><span class="price">$35 to $65</span></div>
+            <p>Initial rinse, Shampoo, Conditioner, blow dry, brush out, nail trim.</p>
+          </div>
+          <div class="price-row">
+            <div class="price-row-top"><span class="name">Mat removal / sanitation cut</span><span class="price">+$25</span></div>
+            <p>For pups whose hair clumping blocks proper cleaning.</p>
+          </div>
+          <div class="price-row">
+            <div class="price-row-top"><span class="name">Fur whitening treatment</span><span class="price">+$10</span></div>
+            <p>Shampoo than helps brighten light dog coats.</p>
+          </div>
+          <div class="price-row">
+            <div class="price-row-top"><span class="name">Medicated bath treatment</span><span class="price">+$10</span></div>
+            <p>Shampoo than helps reduce skin irritation.</p>
+          </div>
+          <div class="price-row">
+            <div class="price-row-top"><span class="name">Undercoat blow out</span><span class="price">+$25</span></div>
+            <p>Blow out and brush out for double coat dogs that are losing their seasonal coats.</p>
+          </div>
+          <div class="price-row">
+            <div class="price-row-top"><span class="name">Skunk remover bath</span><span class="price">+$85</span></div>
+            <p>A shampoo that helps remove the smell of fart kitten friends.</p>
+          </div>
+        </div>
+
+        <div class="price-category glass reveal">
+          <h3>Hair Cutting Services (Arf!)</h3>
+          <div class="price-row">
+            <div class="price-row-top"><span class="name">Basic trim</span><span class="price">$45 - $85</span></div>
+            <p>All over shave down, with no shaping of the head and tail.</p>
+          </div>
+          <div class="price-row">
+            <div class="price-row-top"><span class="name">Full hair cut</span><span class="price">$55 - $125</span></div>
+            <p>All over shave down on body, scissor cut shaping of the head and tail.</p>
+          </div>
+          <div class="price-row">
+            <div class="price-row-top"><span class="name">Style cut</span><span class="price">$125 - $200</span></div>
+            <p>Breed specific hair cut. Body skirts.</p>
+          </div>
+          <div class="price-row">
+            <div class="price-row-top"><span class="name">Some o'l weird cut</span><span class="price">N/A</span></div>
+            <p>The rare mow-hawks. We do not dye animals.</p>
+          </div>
+        </div>
+
+        <div class="price-category glass reveal">
+          <h3>Hair Cutting Services (Purrr...)</h3>
+          <div class="price-row">
+            <div class="price-row-top"><span class="name">Cat Bath</span><span class="price">$55 - $125</span></div>
+            <p>Initial rinse, Shampoo, Conditioner, blow dry, brush out, nail trim.</p>
+          </div>
+          <div class="price-row">
+            <div class="price-row-top"><span class="name">Matt Removal</span><span class="price">$35 - $55</span></div>
+            <p>Removal of matted hair with hand scissors and a comb.</p>
+          </div>
+          <div class="price-row">
+            <div class="price-row-top"><span class="name">Cat ShaveDown</span><span class="price">$65 - $75</span></div>
+            <p>All over shave down using clippers.</p>
+          </div>
+          <div class="price-row">
+            <div class="price-row-top"><span class="name">Cat Bath & ShaveDown</span><span class="price">$100 - $120</span></div>
+            <p>Initial rinse, Shampoo, Conditioner, blow dry, shave, brush out & nail trim.</p>
+          </div>
+        </div>
+
+        <div class="price-category glass reveal">
+          <h3>Tooth & Nail Services</h3>
+          <div class="price-row">
+            <div class="price-row-top"><span class="name">Basic nail trim</span><span class="price">$20</span></div>
+            <p>Nail clippers or nail grinder depending on the animals preference.</p>
+          </div>
+          <div class="price-row">
+            <div class="price-row-top"><span class="name">Advanced nail trim</span><span class="price">+$15</span></div>
+            <p>Anxious animals, biters requiring muzzles.</p>
+          </div>
+          <div class="price-row">
+            <div class="price-row-top"><span class="name">Tooth brush</span><span class="price">$22</span></div>
+            <p>Only if pet will allow it.</p>
+          </div>
+        </div>
+
+      </div>
+      <p class="price-note">Please call to get the soonest appointment.</p>
+    </div>
+  </section>
+
   <section class="hours" id="hours">
     <div class="wrap">
       <div class="kicker">Plan your visit</div>
@@ -416,7 +530,7 @@
         </div>
         <div class="contact-block">
           <div class="label">Book Grooming</div>
-          <a href="#">Schedule on Square &rarr;</a>
+          <a href="https://app.squareup.com/appointments/book/n58xocbbv87rrz/FHCZT4CT6SA70/start" target="_blank" rel="noopener">Schedule on Square &rarr;</a>
         </div>
       </div>
     </div>
