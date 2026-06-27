@@ -95,22 +95,19 @@
     border:1px solid rgba(255,255,255,0.4);
     mix-blend-mode:overlay;
   }
-.pane-1{
+  .pane-1{
     width:210px; height:210px; top:8%; left:6%;
-    background:linear-gradient(135deg, rgba(217,104,75,0.34), rgba(217,104,75,0.07));
     border:none; mix-blend-mode:normal;
-    clip-path:path(evenodd, 'M40,75 L18,8 L76,58 Z M160,75 L182,8 L124,58 Z M28,118 A72 62 0 1 0 172 118 A72 62 0 1 0 28 118 Z M74,190 A26 16 0 1 0 126,190 A26 16 0 1 0 74,190 Z M68,107 A9 9 0 1 0 86,107 A9 9 0 1 0 68,107 Z M114,107 A9 9 0 1 0 132,107 A9 9 0 1 0 114,107 Z M89,186 A11 7 0 1 0 111,186 A11 7 0 1 0 89,186 Z');
-    -webkit-clip-path:path(evenodd, 'M40,75 L18,8 L76,58 Z M160,75 L182,8 L124,58 Z M28,118 A72 62 0 1 0 172 118 A72 62 0 1 0 28 118 Z M74,190 A26 16 0 1 0 126,190 A26 16 0 1 0 74,190 Z M68,107 A9 9 0 1 0 86,107 A9 9 0 1 0 68,107 Z M114,107 A9 9 0 1 0 132,107 A9 9 0 1 0 114,107 Z M89,186 A11 7 0 1 0 111,186 A11 7 0 1 0 89,186 Z');
     animation:float1 30s ease-in-out infinite;
   }
-.pane-2{
+  .pane-2{
     width:220px; height:220px; top:35%; right:8%;
-    background:linear-gradient(135deg, rgba(107,143,113,0.34), rgba(107,143,113,0.07));
     border:none; mix-blend-mode:normal;
-    clip-path:path(evenodd, 'M0,45 A22 30 0 1 0 44,45 A22 30 0 1 0 0,45 Z M156,45 A22 30 0 1 0 200,45 A22 30 0 1 0 156,45 Z M14,112 A86 86 0 1 0 186,112 A86 86 0 1 0 14,112 Z M59,100 A15 15 0 1 0 89,100 A15 15 0 1 0 59,100 Z M111,100 A15 15 0 1 0 141,100 A15 15 0 1 0 111,100 Z M77,142 A23 17 0 1 0 123,142 A23 17 0 1 0 77,142 Z');
-    -webkit-clip-path:path(evenodd, 'M0,45 A22 30 0 1 0 44,45 A22 30 0 1 0 0,45 Z M156,45 A22 30 0 1 0 200,45 A22 30 0 1 0 156,45 Z M14,112 A86 86 0 1 0 186,112 A86 86 0 1 0 14,112 Z M59,100 A15 15 0 1 0 89,100 A15 15 0 1 0 59,100 Z M111,100 A15 15 0 1 0 141,100 A15 15 0 1 0 111,100 Z M77,142 A23 17 0 1 0 123,142 A23 17 0 1 0 77,142 Z');
     animation:float2 36s ease-in-out infinite;
   }
+  .pane-1, .pane-2{ overflow:visible; }
+  .pane-1 rect[mask], .pane-2 rect[mask]{ fill:var(--accent); }
+  .pane-2 rect[mask]{ fill:var(--sage); }
   .pane-3{
     width:340px; height:180px; bottom:10%; left:18%;
     background:linear-gradient(135deg, rgba(236,227,209,0.5), rgba(236,227,209,0.05));
@@ -319,8 +316,30 @@
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
     <div class="blob blob-3"></div>
-    <div class="pane pane-1"></div>
-    <div class="pane pane-2"></div>
+    <svg class="pane pane-1" viewBox="0 0 200 200" preserveAspectRatio="none">
+      <defs>
+        <mask id="corgiMask">
+          <rect width="200" height="200" fill="white"/>
+          <path d="M15,95 C20,84 28,75 40,68 C50,62 58,58 65,50 C72,42 78,36 88,32 C95,18 102,8 110,6 C116,5 120,10 118,18 C115,28 108,34 100,38 C112,42 126,48 138,58 C152,70 162,85 168,102 C173,118 175,135 172,150 C168,163 158,170 145,172 C128,175 110,172 95,166 C80,160 68,150 58,138 C50,128 44,118 38,112 C32,118 24,116 22,108 C20,102 17,99 15,95 Z" fill="none" stroke="black" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="62" cy="68" r="3.4" fill="black"/>
+        </mask>
+      </defs>
+      <rect width="200" height="200" rx="18" fill-opacity="0.85" mask="url(#corgiMask)"/>
+    </svg>
+    <svg class="pane pane-2" viewBox="0 0 200 200" preserveAspectRatio="none">
+      <defs>
+        <mask id="sleepyMask">
+          <rect width="200" height="200" fill="white"/>
+          <path d="M30,140 C20,115 22,90 40,75 C55,62 70,55 88,52 C100,50 112,48 120,52 C130,55 138,62 142,72 C148,78 150,84 146,88 C142,90 136,88 130,84 C124,90 118,96 115,100 C140,105 155,118 158,138 C160,158 150,175 130,182 C110,188 90,188 70,184 C50,180 35,170 28,155 C25,150 27,144 30,140 Z" fill="none" stroke="black" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M92,48 C88,38 92,28 100,30 C106,32 106,42 98,50 C95,52 93,50 92,48 Z" fill="none" stroke="black" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M112,66 C115,63 121,63 124,66" fill="none" stroke="black" stroke-width="2.8" stroke-linecap="round"/>
+          <circle cx="147" cy="83" r="2.4" fill="black"/>
+          <path d="M158,40 L168,40 L158,50 L168,50" fill="none" stroke="black" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M150,28 L156,28 L150,34 L156,34" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </mask>
+      </defs>
+      <rect width="200" height="200" rx="18" fill-opacity="0.85" mask="url(#sleepyMask)"/>
+    </svg>
     <div class="pane pane-3"></div>
     <div class="pane pane-4"></div>
   </div>
