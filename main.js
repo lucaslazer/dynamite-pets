@@ -74,8 +74,8 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
   window.addEventListener('load', function() {
     // morphDur = transition time ms | holdDur = pause at each end ms | startDelay = stagger ms
-    animatePane(document.getElementById('morph1'), CHAR,    CHARVAR, 1100, 3500,    0);
-    animatePane(document.getElementById('morph2'), FACE,    WETDOG,  1300, 4000, 1800);
-    animatePane(document.getElementById('morph3'), MALIKAI, MARKIE,  1000, 3200, 3600);
+    animatePane(document.getElementById('morph1'), CHAR,    CHARVAR, 600, 3500,    0);
+    animatePane(document.getElementById('morph2'), FACE,    WETDOG,  700, 4000, 1800);
+    animatePane(document.getElementById('morph3'), MALIKAI, MARKIE,  500, 3200, 3600);
   });
 })();
