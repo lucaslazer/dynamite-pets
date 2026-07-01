@@ -20,12 +20,20 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   // State machine: morphAtoB -> holdB -> morphBtoA -> holdA -> repeat
   // Two separate interpolators per pane avoids the pop at the reversal point.
   function animatePane(el, pathA, pathB, morphDur, holdDur, startDelay) {
-    var fwd = flubber.interpolate(pathA, pathB, {maxSegmentLength: 10});
-    var rev = flubber.interpolate(pathB, pathA, {maxSegmentLength: 10});
+    var fwd = flubber.interpolate(pathA, pathB, {maxSegmentLength: 20});
+    var rev = flubber.interpolate(pathB, pathA, {maxSegmentLength: 20});
     var state = 'morphAtoB';
     var stateStart = null;
+    var lastTs   = null;
 
     function frame(ts) {
+      // If the previous frame was >200ms ago (tab hidden, browser throttled, etc.)
+      // slide stateStart forward by the gap so we don't catch-up at warp speed.
+      if (lastTs !== null && ts - lastTs > 200) {
+        if (stateStart !== null) stateStart += (ts - lastTs);
+      }
+      lastTs = ts;
+
       if (stateStart === null) stateStart = ts;
       var elapsed = ts - stateStart;
       var t, cos;
