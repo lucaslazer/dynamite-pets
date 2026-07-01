@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="scroll-progress" aria-hidden="true"></div>
 <svg class="noise-layer" aria-hidden="true">
 <filter id="grain">
 <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="noise"/>
@@ -76,6 +77,9 @@
 <header>
 <nav class="wrap">
 <div class="wordmark">Dynamite<span>Pets</span></div>
+<button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+<span></span><span></span><span></span>
+</button>
 <div class="navlinks">
 <a href="#about">About</a>
 <a href="#services">Services</a>
@@ -94,6 +98,12 @@
 <p class="lede">Dynamite Pets is a neighborhood pet supply store and grooming shop. No double-booked tables, no rush. Just your pet, fully attended to.</p>
 <div class="cta-row">
 <a href="https://app.squareup.com/appointments/book/n58xocbbv87rrz/FHCZT4CT6SA70/start" target="_blank" rel="noopener" class="btn btn-primary">Book a Grooming Appointment</a>
+<div class="call-wrap">
+<button class="btn btn-call" aria-expanded="false">Call for Appointment</button>
+<div class="call-popup" role="tooltip" aria-hidden="true">
+<a href="tel:+15102836788">(510) 283-6788</a>
+</div>
+</div>
 <a href="#contact" class="btn btn-ghost">Visit the Store</a>
 </div>
 </div>
@@ -119,8 +129,8 @@
 <p>Dynamite Pets has been part of the Hercules waterfront community since 2015, supplying food, gear, and grooming for the animals in your life.</p>
 <p>We're a small operation by choice. Grooming one pet at a time means we notice the things a rushed groomer would miss, and your pet never waits in a loud room full of strangers.</p>
 <div class="stat">
-<div class="stat-item"><div class="num">2015</div><div class="cap">Open since</div></div>
-<div class="stat-item"><div class="num">1</div><div class="cap">Pet at a time</div></div>
+<div class="stat-item"><div class="num" data-count="2015" data-count-from="current-year">2015</div><div class="cap">Open since</div></div>
+<div class="stat-item"><div class="num" data-count="1">1</div><div class="cap">Pet at a time</div></div>
 <div class="stat-item"><div class="num">CA</div><div class="cap">Hercules waterfront</div></div>
 </div>
 </div>
@@ -155,7 +165,8 @@
 <div class="price-grid">
 
 <div class="price-category glass reveal">
-<h3>Bathing Services (Woof!)</h3>
+<button class="price-toggle" aria-expanded="true">Bathing Services (Woof!) <em class="chevron">&#8964;</em></button>
+<div class="price-rows">
 <div class="price-row">
 <div class="price-row-top"><span class="name">Basic bath</span><span class="price">$45 to $75</span></div>
 <p>Initial rinse, Shampoo, Conditioner, blow dry, brush out, nail trim.</p>
@@ -181,9 +192,11 @@
 <p>A shampoo that helps remove the smell of fart kitten friends.</p>
 </div>
 </div>
+</div>
 
 <div class="price-category glass reveal">
-<h3>Hair Cutting Services (Arf!)</h3>
+<button class="price-toggle" aria-expanded="true">Hair Cutting Services (Arf!) <em class="chevron">&#8964;</em></button>
+<div class="price-rows">
 <div class="price-row">
 <div class="price-row-top"><span class="name">Basic trim</span><span class="price">$55 - $95</span></div>
 <p>All over shave down, with no shaping of the head and tail.</p>
@@ -205,9 +218,11 @@
 <p>We specialize in reality based haircuts. No cybernetic fur extensions or Bitcoin shampoo.</p>
 </div>
 </div>
+</div>
 
 <div class="price-category glass reveal">
-<h3>Hair Cutting Services (Purrr...)</h3>
+<button class="price-toggle" aria-expanded="true">Hair Cutting Services (Purrr...) <em class="chevron">&#8964;</em></button>
+<div class="price-rows">
 <div class="price-row">
 <div class="price-row-top"><span class="name">Cat Bath</span><span class="price">$55 - $125</span></div>
 <p>Initial rinse, Shampoo, Conditioner, blow dry, brush out, nail trim.</p>
@@ -225,9 +240,11 @@
 <p>Initial rinse, Shampoo, Conditioner, blow dry, shave, brush out &amp; nail trim.</p>
 </div>
 </div>
+</div>
 
 <div class="price-category glass reveal">
-<h3>Tooth &amp; Nail Services</h3>
+<button class="price-toggle" aria-expanded="true">Tooth &amp; Nail Services <em class="chevron">&#8964;</em></button>
+<div class="price-rows">
 <div class="price-row">
 <div class="price-row-top"><span class="name">Basic nail trim</span><span class="price">$20</span></div>
 <p>Nail clippers or nail grinder depending on the animals preference.</p>
@@ -239,6 +256,7 @@
 <div class="price-row">
 <div class="price-row-top"><span class="name">Tooth brush</span><span class="price">$22</span></div>
 <p>Only if pet will allow it.</p>
+</div>
 </div>
 </div>
 
