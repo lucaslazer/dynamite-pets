@@ -1,3 +1,131 @@
+// Mobile nav toggle
+(function() {
+  var toggle = document.querySelector('.nav-toggle');
+  var nav    = document.querySelector('.navlinks');
+  if (!toggle || !nav) return;
+  toggle.addEventListener('click', function() {
+    var open = nav.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      nav.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
+// Scroll progress bar
+(function() {
+  var bar = document.querySelector('.scroll-progress');
+  if (!bar) return;
+  window.addEventListener('scroll', function() {
+    var scrolled = window.scrollY;
+    var total    = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
+  }, { passive: true });
+})();
+
+// Scroll-spy nav
+(function() {
+  var sections  = document.querySelectorAll('section[id]');
+  var navLinks  = document.querySelectorAll('.navlinks a[href^="#"]');
+  if (!sections.length || !navLinks.length) return;
+  var spy = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        navLinks.forEach(function(a) {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+        });
+      }
+    });
+  }, { threshold: 0.35 });
+  sections.forEach(function(s) { spy.observe(s); });
+})();
+
+// Count-up/down stats
+(function() {
+  var nums = document.querySelectorAll('.num[data-count]');
+  if (!nums.length) return;
+  var counter = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      var el     = entry.target;
+      var target = parseInt(el.dataset.count);
+      var from;
+      if (el.dataset.countFrom === 'current-year') {
+        from = new Date().getFullYear(); // e.g. 2026 → counts DOWN to 2015
+      } else {
+        from = target > 10 ? target - 6 : 0;
+      }
+      var dur  = 900;
+      var t0   = null;
+      (function tick(ts) {
+        if (!t0) t0 = ts;
+        var p    = Math.min((ts - t0) / dur, 1);
+        var ease = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(from + (target - from) * ease);
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = target;
+      })(performance.now());
+      counter.unobserve(el);
+    });
+  }, { threshold: 0.8 });
+  nums.forEach(function(el) { counter.observe(el); });
+})();
+
+// Call for appointment popup
+(function() {
+  var btn   = document.querySelector('.btn-call');
+  var popup = document.querySelector('.call-popup');
+  if (!btn || !popup) return;
+  btn.addEventListener('click', function(e) {
+    var open = popup.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+    popup.setAttribute('aria-hidden', !open);
+    e.stopPropagation();
+  });
+  document.addEventListener('click', function() {
+    popup.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    popup.setAttribute('aria-hidden', 'true');
+  });
+  popup.addEventListener('click', function(e) { e.stopPropagation(); });
+})();
+
+// Mobile pricing accordion
+(function() {
+  var toggles = document.querySelectorAll('.price-toggle');
+  if (!toggles.length) return;
+  // Collapse all but the first on mobile
+  function isMobile() { return window.innerWidth <= 760; }
+  function initAccordion() {
+    toggles.forEach(function(btn, i) {
+      var cat = btn.closest('.price-category');
+      if (isMobile() && i > 0) {
+        cat.classList.add('collapsed');
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        cat.classList.remove('collapsed');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  }
+  initAccordion();
+  window.addEventListener('resize', initAccordion, { passive: true });
+  toggles.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (!isMobile()) return;
+      var cat      = btn.closest('.price-category');
+      var isOpen   = !cat.classList.contains('collapsed');
+      cat.classList.toggle('collapsed', isOpen);
+      btn.setAttribute('aria-expanded', !isOpen);
+    });
+  });
+})();
+
 // Scroll reveal
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.body.classList.add('js-reveal-enabled');
@@ -74,8 +202,8 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
   window.addEventListener('load', function() {
     // morphDur = transition time ms | holdDur = pause at each end ms | startDelay = stagger ms
-    animatePane(document.getElementById('morph1'), CHAR,    CHARVAR, 600, 3500,    0);
-    animatePane(document.getElementById('morph2'), FACE,    WETDOG,  700, 4000, 1800);
-    animatePane(document.getElementById('morph3'), MALIKAI, MARKIE,  500, 3200, 3600);
+    animatePane(document.getElementById('morph1'), CHAR,    CHARVAR, 1100, 3500,    0);
+    animatePane(document.getElementById('morph2'), FACE,    WETDOG,  1300, 4000, 1800);
+    animatePane(document.getElementById('morph3'), MALIKAI, MARKIE,  1000, 3200, 3600);
   });
 })();
